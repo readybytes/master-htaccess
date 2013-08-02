@@ -171,7 +171,7 @@ FileETag MTime Size
 SetEnvIf user-agent "Indy Library" stayout=1
 # WARNING: Disabling wget will also block the most common method for
 # running CRON jobs. Remove if you have issues with CRON jobs.
-SetEnvIf user-agent "Wget" stayout=1
+# SetEnvIf user-agent "Wget" stayout=1
 # The following rules are for bandwidth-hogging download tools
 SetEnvIf user-agent "libwww-perl" stayout=1
 SetEnvIf user-agent "Download Demon" stayout=1
@@ -191,7 +191,7 @@ deny from env=stayout
 # The server needs to be compiled with mod_deflate otherwise it will send HTTP 500 Error.
 # mod_deflate is not available on Apache 1.x series. Can only be used with Apache 2.x server.
 # AddOutputFilterByType is now deprecated by Apache. Use mod_filter in the future.
-AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css application/xml application/xhtml+xml application/rss+xml application/javascript application/x-javascript
+# AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css application/xml application/xhtml+xml application/rss+xml application/javascript application/x-javascript
 ########## End - Automatic compression of resources
 
 ########## Begin - Google Apps redirection, by Komra.de
@@ -244,7 +244,7 @@ RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 RewriteCond %{SERVER_PORT} !^443$
 ## Alternatively, comment the above line and uncomment the following line:
 # RewriteCond %{HTTPS} ^off$ [NC]
-RewriteRule ^foobar\.html$ https://www.example.com/foobar.html [R=301,L]
+# RewriteRule ^foobar\.html$ https://www.example.com/foobar.html [R=301,L]
 ## NOTE: If you get an HTTP 500 error, please swap [R=301,L] with [R,L]
 # Add more rules below this line
 ########## End - Force HTTPS for certain pages
@@ -287,15 +287,15 @@ RewriteRule .* - [F]
 ## rule set further down this file.
 ##
 ## Allow UddeIM CAPTCHA
-RewriteRule ^components/com_uddeim/captcha15\.php$ - [L]
+#RewriteRule ^components/com_uddeim/captcha15\.php$ - [L]
 ## Allow Phil Taylor's Turbo Gears
-RewriteRule ^plugins/system/GoogleGears/gears-manifest\.php$ - [L]
+#RewriteRule ^plugins/system/GoogleGears/gears-manifest\.php$ - [L]
 ## Allow JoomlaWorks AllVideos
-RewriteRule ^plugins/content/jw_allvideos/includes/jw_allvideos_scripts\.php$ - [L]
+#RewriteRule ^plugins/content/jw_allvideos/includes/jw_allvideos_scripts\.php$ - [L]
 ## Allow Admin Tools Joomla! updater to run
-RewriteRule ^administrator/components/com_admintools/restore\.php$ - [L]
+#RewriteRule ^administrator/components/com_admintools/restore\.php$ - [L]
 ## Allow Akeeba Backup Professional's integrated restoration script to run
-RewriteRule ^administrator/components/com_akeeba/restore\.php$ - [L]
+#RewriteRule ^administrator/components/com_akeeba/restore\.php$ - [L]
 ## Allow Akeeba Kickstart
 RewriteRule ^kickstart\.php$ - [L]
 
@@ -349,15 +349,15 @@ RewriteRule .* - [F]
 
 ## Back-end protection
 ## This also blocks fingerprinting attacks browsing for XML and INI files
-RewriteRule ^administrator/?$ - [L]
-RewriteRule ^administrator/index\.(php|html?)$ - [L]
-RewriteRule ^administrator/index[23]\.php$ - [L]
-RewriteRule ^administrator/(components|modules|templates|images|plugins)/.*\.(jp(e?g|2)?|png|gif|bmp|css|js|swf|html?|mp(eg?|[34])|avi|wav|og[gv]|xlsx?|docx?|pptx?|zip|rar|pdf|xps|txt|7z|svg|od[tsp]|flv|mov)$ - [L]
-RewriteRule ^administrator/ - [F]
+#RewriteRule ^administrator/?$ - [L]
+#RewriteRule ^administrator/index\.(php|html?)$ - [L]
+#RewriteRule ^administrator/index[23]\.php$ - [L]
+#RewriteRule ^administrator/(components|modules|templates|images|plugins)/.*\.(jp(e?g|2)?|png|gif|bmp|css|js|swf|html?|mp(eg?|[34])|avi|wav|og[gv]|xlsx?|docx?|pptx?|zip|rar|pdf|xps|txt|7z|svg|od[tsp]|flv|mov)$ - [L]
+#RewriteRule ^administrator/ - [F]
 
 ## Explicitly allow access only to XML-RPC's xmlrpc/index.php or plain xmlrpc/ directory
-RewriteRule ^xmlrpc/(index\.php)?$ - [L]
-RewriteRule ^xmlrpc/ - [F]
+#RewriteRule ^xmlrpc/(index\.php)?$ - [L]
+#RewriteRule ^xmlrpc/ - [F]
 
 ## Disallow front-end access for certain Joomla! system directories
 RewriteRule ^includes/js/ - [L]
